@@ -12,15 +12,26 @@ const balance = document.getElementById('have-balane');
 
 
 function amarTaka(){
-const incomeinputValue = parseInt(incomeInput.value);
-const foodValue = parseFloat(food.value);
-const rentValue = parseFloat(rent.value)
-const clothesValue = parseFloat(clothes.value)
-const totalExpense = foodValue + rentValue + clothesValue;
-      expens.innerText = totalExpense;
-const totalBalance = incomeinputValue - totalExpense;
-const balanceInner = parseFloat(balance.innerText);
-     balance.innerText = balanceInner + totalBalance;
+if( isNaN(incomeInput.value) && isNaN(food.value) && isNaN(rent.value) && isNaN(clothes) ){
+   const showDisplay =  document.getElementById('alert-count');
+        showDisplay.style.display = 'block';
+}
+
+    if(incomeInput.value > 0 && food.value >0 && rent.value >0 && clothes.value >0 ){
+        const showDisplay =  document.getElementById('alert-count');
+        showDisplay.style.display = 'none';
+        const incomeinputValue = parseInt(incomeInput.value);
+        const foodValue = parseFloat(food.value);
+        const rentValue = parseFloat(rent.value)
+        const clothesValue = parseFloat(clothes.value)
+        const totalExpense = foodValue + rentValue + clothesValue;
+              expens.innerText = totalExpense;
+        const totalBalance = incomeinputValue - totalExpense;
+        
+             balance.innerText = totalBalance;
+             
+    }
+
 
     //  clear inputs value
      food.value = '';
@@ -28,6 +39,7 @@ const balanceInner = parseFloat(balance.innerText);
      clothes.value = '';
      incomeInput.value = '';
 
+  
 }
 
 

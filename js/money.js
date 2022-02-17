@@ -25,15 +25,31 @@ function totalExpense(){
  
 function mySalary(){
 if( isNaN(incomeInput.value) && isNaN(food.value) && isNaN(rent.value) && isNaN(clothes) ){
-   const showDisplay =  document.getElementById('alert-count');
-        showDisplay.style.display = 'block';
+   const showDisplay =  document.getElementById('alert-count').style.display = 'block';
+        
+        expens.innerText = '0';
+        balance.innerText = '0';
 }
 
     const incomeinputValue = parseInt(incomeInput.value);
-    const positiveNumber =  document.getElementById("positive-number");
-   
 
-    if(incomeInput.value > 0 && food.value > 0 && rent.value > 0 && clothes.value > 0 ){
+    if(incomeInput.value < 0 && food.value < 0 && rent.value < 0 && clothes.value < 0 ){
+        const minusNumber =  document.getElementById("positive-number");
+             minusNumber.style.display = "block";
+             document.getElementById('alert-count').style.display = 'none';
+            
+             expens.innerText = '0';
+             balance.innerText = '0';
+           
+      }
+      else{
+        const minusNumber =  document.getElementById("positive-number");
+        minusNumber.style.display = "none";
+        
+      }
+    
+
+     if(incomeInput.value > 0 && food.value > 0 && rent.value > 0 && clothes.value > 0 ){
                 
         if(totalExpense() > incomeInput.value ){    
              document.getElementById('show-exp').style.display = 'block';
@@ -41,9 +57,8 @@ if( isNaN(incomeInput.value) && isNaN(food.value) && isNaN(rent.value) && isNaN(
             }
       else if(incomeInput.value > 0 && food.value > 0 && rent.value > 0 && clothes.value > 0 ){
         document.getElementById('show-exp').style.display = 'none';
-        const showDisplay =  document.getElementById('alert-count');
-        showDisplay.style.display = 'none';
-
+        document.getElementById('alert-count').style.display = 'none';
+       
              expens.innerText = totalExpense();
         const totalBalance = incomeinputValue - totalExpense()
                  balance.innerText = totalBalance;
@@ -74,13 +89,19 @@ function saveButton(){
     const totalSaving = savingTaka * savingInputValue;
     const saving = document.getElementById('total-saving');
           saving.innerText = totalSaving;
-
-          if(totalSaving > balance.innerText ){
-            document.getElementById("balance-low").style.display = 'block';  
-          }
         
-    const cashTaka = document.getElementById('cash-taka');
-          cashTaka.innerText = balanceInner - saving.innerText;
+          const cashTaka = document.getElementById('cash-taka');
+          cashTaka.innerText = balanceInner - saving.innerText;         
+          if(totalSaving > balance.innerText ){
+            document.getElementById("balance-low").style.display = 'block';
+            saving.innerText = '0';
+            cashTaka.innerText = '0';  
+          }
+          else{
+            document.getElementById("balance-low").style.display = 'none';
+          }
+
+    
           savingInput.value = '';
 }
 

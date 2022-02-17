@@ -4,7 +4,13 @@ body{
 .show-display{
     display: none;
 }
+.positive-number-show{
+    display: none;
+}
  
 .show-expense{
+    display: none;
+}
+.balance-show{
     display: none;
 }

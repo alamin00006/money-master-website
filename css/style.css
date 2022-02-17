@@ -4,3 +4,7 @@ body{
 .show-display{
     display: none;
 }
+ 
+.show-expense{
+    display: none;
+}

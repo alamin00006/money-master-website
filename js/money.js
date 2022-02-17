@@ -1,7 +1,8 @@
+
 // Calculate Button
 document.getElementById('calculate').addEventListener('click', function(){
     mySalary();
-
+ 
 })
 const incomeInput = document.getElementById("income-input");
 const food = document.getElementById('food-taka');
@@ -9,37 +10,50 @@ const rent = document.getElementById('rent-taka');
 const clothes = document.getElementById('clothes-taka');
 const expens = document.getElementById('total-expense');
 const balance = document.getElementById('have-balane');
-
-
+ 
+ 
 function mySalary(){
 if( isNaN(incomeInput.value) && isNaN(food.value) && isNaN(rent.value) && isNaN(clothes) ){
    const showDisplay =  document.getElementById('alert-count');
         showDisplay.style.display = 'block';
 }
-
-    if(incomeInput.value > 0 && food.value > 0 && rent.value > 0 && clothes.value > 0 ){
-        const showDisplay =  document.getElementById('alert-count');
-        showDisplay.style.display = 'none';
-        const incomeinputValue = parseInt(incomeInput.value);
+ 
+    function totalExpense(){
+     
         const foodValue = parseFloat(food.value);
         const rentValue = parseFloat(rent.value)
         const clothesValue = parseFloat(clothes.value)
-        const totalExpense = foodValue + rentValue + clothesValue;
-              expens.innerText = totalExpense;
-        const totalBalance = incomeinputValue - totalExpense;
-                 balance.innerText = totalBalance;
-             
+        const totalExpensee = foodValue + rentValue + clothesValue;
+              return totalExpensee;
+               
     }
-
+    const incomeinputValue = parseInt(incomeInput.value);
+   
+    if(incomeInput.value > 0 && food.value > 0 && rent.value > 0 && clothes.value > 0 ){
+        if(totalExpense() > incomeInput.value ){    
+             document.getElementById('show-exp').style.display = 'block';
+    }
+    else{
+        document.getElementById('show-exp').style.display = 'none';
+        const showDisplay =  document.getElementById('alert-count');
+        showDisplay.style.display = 'none';
+       
+     
+              expens.innerText = totalExpense();
+        const totalBalance = incomeinputValue - totalExpense()
+                 balance.innerText = totalBalance;
+        }
+    }
+ 
     //  clear inputs value
      food.value = '';
      rent.value = '';
      clothes.value = '';
      incomeInput.value = '';
-  
+ 
 }
-
-
+ 
+ 
 // save Button
 function saveButton(){
     const savingInput = document.getElementById("saving-input");
@@ -54,3 +68,4 @@ function saveButton(){
           cashTaka.innerText = balanceInner - saving.innerText;
           savingInput.value = '';
 }
+

@@ -74,13 +74,11 @@ function saveButton(){
     const totalSaving = savingTaka * savingInputValue;
     const saving = document.getElementById('total-saving');
           saving.innerText = totalSaving;
-          
-        //   if(totalSaving > balance.innerText ){
-        //     document.getElementById("balance-low").style.display = 'block';  
-        //   }
-        //   else if(totalSaving > balance.innerText ){
-        //     document.getElementById("balance-low").style.display = 'none';  
-        //   }
+
+          if(totalSaving > balance.innerText ){
+            document.getElementById("balance-low").style.display = 'block';  
+          }
+        
     const cashTaka = document.getElementById('cash-taka');
           cashTaka.innerText = balanceInner - saving.innerText;
           savingInput.value = '';
